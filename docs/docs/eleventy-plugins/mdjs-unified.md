@@ -5,13 +5,13 @@ Use mdjs in your Eleventy site.
 ## Setup
 
 ```shell
-npm install @rocket/eleventy-plugin-mdjs
+npm install @rocket/eleventy-plugin-mdjs-unified
 ```
 
 Create an Eleventy config file `.eleventy.js`
 
 ```js
-const pluginMdjs = require('@rocket/eleventy-plugin-mdjs');
+const pluginMdjs = require('@rocket/eleventy-plugin-mdjs-unified');
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginMdjs);
@@ -27,7 +27,7 @@ We do use [plugins-manager](../tools/plugins-manager.md).
 This example adds a CSS class to the `htmlHeading` plugin so heading links can be selected in CSS.
 
 ```js
-const pluginMdjs = require('@rocket/eleventy-plugin-mdjs');
+const pluginMdjs = require('@rocket/eleventy-plugin-mdjs-unified');
 const { adjustPluginOptions } = require('plugins-manager');
 
 module.exports = function (eleventyConfig) {
@@ -51,7 +51,7 @@ Some plugins do work with the Markdown AST and some with the rehype (e.g. HTML) 
 Examples on how to insert a plugin right after creating the Markdown AST.
 
 ```js
-const pluginMdjs = require('@rocket/eleventy-plugin-mdjs');
+const pluginMdjs = require('@rocket/eleventy-plugin-mdjs-unified');
 const { addPlugin } = require('plugins-manager');
 const { myRemarkPlugin } = require('./my-remark-plugin.js');
 
@@ -67,12 +67,12 @@ module.exports = function (eleventyConfig) {
 Examples on how to insert a plugin right after creating the rehype AST.
 
 ```js
-const pluginMdjs = require('@rocket/eleventy-plugin-mdjs');
+const pluginMdjs = require('@rocket/eleventy-plugin-mdjs-unified');
 const { addPlugin } = require('plugins-manager');
 const { myRehypePlugin } = require('./my-rehype-plugin.js');
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(pluginMdjs, {
+    eleventyConfig.addPlugin(pluginMdjs, {
     setupUnifiedPlugins: [
       addPlugin({ name: 'my-rehype-plugin', plugin: myRehypePlugin, location: 'remark2rehype' }),
     ],
